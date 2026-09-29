@@ -3,8 +3,15 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Lofi Scenery | 作業用LofiとLofi用景色</title>
-  <meta name="description" content="Lofi Sceneryは、勉強や仕事、リラックスタイムに最適なLo-Fi音楽を美しいデジタルアートの背景とともに無料で流せる作業用BGMサイトです。Pixabay提供の心地よいトラックを聴きながら、快適な作業環境を整えましょう。">
+<title>Lofi Scenery – 景色で癒やされるLofi作業用・睡眠用BGM</title>
+<meta name="description" content="雨の窓辺、星降る夜、夕焼けの海、雪の森――動く景色を眺めながらLofiを流せる無料サイト。作業用・勉強用・睡眠用に、環境音・スリープタイマー・ポモドーロタイマーも使えます。">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Lofi Scenery">
+<meta property="og:title" content="Lofi Scenery – 景色で癒やされるLofi作業用・睡眠用BGM">
+<meta property="og:description" content="雨の窓辺、星降る夜、夕焼けの海、雪の森を眺めながらLofiを流せる無料サイト。作業・勉強・睡眠のお供にどうぞ。">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Lofi Scenery – 景色で癒やされるLofi作業用・睡眠用BGM">
+<meta name="twitter:description" content="雨の窓辺、星降る夜、夕焼けの海、雪の森を眺めながらLofiを流せる無料サイト。作業・勉強・睡眠のお供にどうぞ。">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Roboto:wght@400;500;700&display=swap">
 <style>
 :root{
@@ -92,6 +99,15 @@ input[type=file]{display:none}
 .track.cur{background:var(--md-secondary-container);color:var(--md-on-secondary-container)}
 .track .tn{font-size:16px;font-weight:500}.track .ta{font-size:12px;opacity:.75}
 .note{font-size:12px;color:var(--md-on-surface-variant);padding:4px 24px 12px}
+.info-body{padding:0 24px 20px;overflow-y:auto}
+.info-body p{font-size:14px;line-height:22px;color:var(--md-on-surface-variant);margin:0 0 12px}
+.info-body b{color:var(--md-on-surface)}
+.settings-body{padding:4px 24px 20px;overflow-y:auto;display:flex;flex-direction:column;gap:16px}
+.set-row .lbl{font-size:14px;font-weight:500;margin-bottom:8px}
+.set-row .cnt{font-size:12px;color:var(--md-on-surface-variant)}
+.seg{display:flex;border:1px solid var(--md-outline);border-radius:12px;overflow:hidden;width:fit-content}
+.seg button{font:inherit;font-size:13px;padding:8px 12px;color:var(--md-on-surface-variant);background:transparent}
+.seg button.on{background:var(--md-secondary-container);color:var(--md-on-secondary-container)}
 /* ツールUI */
 .options{padding:14px 16px;gap:10px;align-items:stretch}
 .auto-group{display:flex;align-items:center;gap:12px;width:100%;min-width:0}
@@ -120,6 +136,8 @@ input[type=file]{display:none}
   <div class="headline"><h1 id="sceneName"></h1><p id="sceneSub"></p></div>
   <div class="top-actions">
     <button class="icon-btn glass" id="queueBtn" aria-label="曲リスト"><svg viewBox="0 0 24 24"><path d="M15 6H3v2h12V6zm0 4H3v2h12v-2zM3 16h8v-2H3v2zM17 6v8.18c-.31-.11-.65-.18-1-.18-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3V8h3V6h-5z"/></svg></button>
+    <button class="icon-btn glass" id="infoBtn" aria-label="このサイトについて（説明を見る）"><svg viewBox="0 0 24 24"><path d="M11 7h2v2h-2V7zm0 4h2v6h-2v-6zm1-9C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/></svg></button>
+    <button class="icon-btn glass" id="settingsBtn" aria-label="設定"><svg viewBox="0 0 24 24"><path d="M19.14 12.94c.04-.3.06-.61.06-.94 0-.32-.02-.64-.07-.94l2.03-1.58c.18-.14.23-.41.12-.61l-1.92-3.32c-.12-.22-.37-.29-.59-.22l-2.39.96c-.5-.38-1.03-.7-1.62-.94l-.36-2.54c-.04-.24-.24-.41-.48-.41h-3.84c-.24 0-.43.17-.47.41l-.36 2.54c-.59.24-1.13.57-1.62.94l-2.39-.96c-.22-.08-.47 0-.59.22L2.74 8.63c-.12.21-.08.47.12.61l2.03 1.58c-.05.3-.09.63-.09.94s.02.64.07.94l-2.03 1.58c-.18.14-.23.41-.12.61l1.92 3.32c.12.22.37.29.59.22l2.39-.96c.5.38 1.03.7 1.62.94l.36 2.54c.05.24.24.41.48.41h3.84c.24 0 .44-.17.47-.41l.36-2.54c.59-.24 1.13-.56 1.62-.94l2.39.96c.22.08.47 0 .59-.22l1.92-3.32c.12-.22.07-.47-.12-.61l-2.01-1.58zM12 15.6c-1.98 0-3.6-1.62-3.6-3.6s1.62-3.6 3.6-3.6 3.6 1.62 3.6 3.6-1.62 3.6-3.6 3.6z"/></svg></button>
     <button class="icon-btn glass" id="fs" aria-label="全画面"><svg viewBox="0 0 24 24"><path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"/></svg></button>
   </div>
 </header>
@@ -144,7 +162,8 @@ input[type=file]{display:none}
         <div class="auto-controls"><select id="mins" aria-label="切替間隔"><option value="1">1分</option><option value="3">3分</option><option value="5" selected>5分</option><option value="10">10分</option><option value="15">15分</option><option value="30">30分</option><option value="60">60分</option></select></div>
       </div>
       <div class="tool-row">
-        <button class="chip" id="amb" title="雨音・風・波を合成した環境音">環境音</button>
+        <button class="chip" id="realBtn" title="粒子を増やし、発光・にじみ・粒子感を重ねてよりリアルな見た目にします">リアルモード</button>
+      <button class="chip" id="amb" title="雨音・風・波を合成した環境音">環境音</button>
         <button class="chip" id="sleepBtn">スリープタイマー</button>
         <button class="chip" id="studyBtn">勉強モード</button>
         <label class="chip" style="cursor:pointer"><svg viewBox="0 0 24 24" style="width:18px;height:18px"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2h-2V5h-5v7H5v2h6v5h2v-5h6v-2h-2z"/></svg>曲を追加<input type="file" id="file" accept="audio/*" multiple></label>
@@ -177,6 +196,36 @@ input[type=file]{display:none}
   <div class="note">音楽: Pixabay(Pixabay Content License)。景色を主役にしたBGMとして使用しています。</div>
 </aside>
 
+<aside class="sheet" id="infoSheet" aria-label="このサイトについて">
+  <div class="sheet-h"><h2>このサイトについて</h2><button class="icon-btn" id="closeInfo" aria-label="閉じる"><svg viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg></button></div>
+  <div class="info-body">
+    <p><b>Lofi Scenery</b>は、動く<b>景色</b>を眺めながら<b>Lofi</b>ミュージックを流せる、無料のブラウザアプリです。</p>
+    <p>「雨の窓辺」「星降る夜」「夕焼けの海」「雪の森」の4つの景色をアニメーションで表現し、雨音や風などの環境音も合成して鳴らせます。景色は自動で切り替わるほか、好きな景色を選んで固定することもできます。</p>
+    <p>Lofi BGMはあらかじめ収録された曲に加えて、お手持ちのmp3を追加して再生することもできます。作業用・勉強用・睡眠用のお供に、スリープタイマーやポモドーロ形式の勉強モードも搭載しています。</p>
+    <p>画面右上の全画面ボタンで、景色とLofiだけに集中できる全画面表示にもなります。</p>
+  </div>
+</aside>
+
+<aside class="sheet" id="settingsSheet" aria-label="設定">
+  <div class="sheet-h"><h2>設定</h2><button class="icon-btn" id="closeSettings" aria-label="閉じる"><svg viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg></button></div>
+  <div class="settings-body">
+    <div class="set-row"><div class="lbl">表示テーマ</div>
+      <div class="seg" id="themeSeg">
+        <button data-theme-opt="system" class="on">端末に合わせる</button>
+        <button data-theme-opt="light">ライト</button>
+        <button data-theme-opt="dark">ダーク</button>
+      </div>
+    </div>
+    <div class="set-row"><div class="lbl">景色の自動切替</div><div class="cnt">下の「景色」カードのスイッチと分数から設定できます</div></div>
+    <div class="set-row"><div class="lbl">保存データ</div>
+      <button class="chip" id="clearDataBtn">このブラウザの保存データを消去</button>
+    </div>
+    <div class="set-row"><div class="lbl">規約・著作権</div>
+      <a class="chip" id="termsLink" href="https://lofi.f5.si/terms.html" target="_blank" rel="noopener" style="text-decoration:none;display:inline-flex;align-items:center">利用規約を見る</a>
+    </div>
+  </div>
+</aside>
+
 <script>
 (function(){
 var cv=document.getElementById('c'),g=cv.getContext('2d'),W,H,D,cur,fade=1;
@@ -189,6 +238,7 @@ function pines(list,col){g.fillStyle=col;list.forEach(function(t){for(var i=0;i<
 /* ---- リアル寄りの描画ヘルパー(静的レイヤーを事前描画→毎フレームは動く部分だけ) ---- */
 var seed=7;function rnd(){seed=seed*16807%2147483647;return (seed-1)/2147483646}
 function RR(a,b){return a+rnd()*(b-a)}
+var realMode=false;function cnt(n){return Math.round(n*(realMode?2.4:1))}
 function layer(fn){var c=document.createElement('canvas');c.width=W*D;c.height=H*D;var sv=g;g=c.getContext('2d');g.scale(D,D);fn();g=sv;return c}
 function terr(rough){var N=512,a=[],mn=9,mx=-9;a[0]=rnd();a[N]=rnd();(function sub(l,r,d){if(r-l<2)return;var m=(l+r)>>1;a[m]=(a[l]+a[r])/2+(rnd()-.5)*d;sub(l,m,d*rough);sub(m,r,d*rough)})(0,N,1);
   a.forEach(function(v){mn=Math.min(mn,v);mx=Math.max(mx,v)});
@@ -207,7 +257,7 @@ var scenes=[
   this.bg=layer(function(){grad([[0,'#060a15'],[.55,'#0f1a31'],[1,'#1b2642']]);
    var x=0;while(x<W){var bw=RR(60,150),bh=RR(H*.12,H*.45);g.fillStyle='rgba(5,8,16,.6)';g.fillRect(x,H*.8-bh,bw,H);x+=bw*RR(.55,1)}
    var C=['255,196,120','255,160,90','170,200,255','255,120,120','255,236,180','140,230,200'];
-   for(var i=0;i<95;i++){var cx=RR(0,W),cy=RR(H*.3,H*.98),r=RR(9,56),c=C[Math.floor(rnd()*6)],a=RR(.14,.5),q=g.createRadialGradient(cx,cy,0,cx,cy,r);
+   for(var i=0,N=cnt(95);i<N;i++){var cx=RR(0,W),cy=RR(H*.3,H*.98),r=RR(9,56),c=C[Math.floor(rnd()*6)],a=RR(.14,.5),q=g.createRadialGradient(cx,cy,0,cx,cy,r);
     q.addColorStop(0,'rgba('+c+','+a*.7+')');q.addColorStop(.78,'rgba('+c+','+a*.85+')');q.addColorStop(.95,'rgba('+c+','+a+')');q.addColorStop(1,'rgba('+c+',0)');
     g.fillStyle=q;g.beginPath();g.arc(cx,cy,r,0,7);g.fill()}});
   this.fog=layer(function(){g.fillStyle='rgba(150,175,215,.05)';g.fillRect(0,0,W,H);var q=g.createLinearGradient(0,H*.5,0,H);q.addColorStop(0,'rgba(170,190,225,0)');q.addColorStop(1,'rgba(170,190,225,.22)');g.fillStyle=q;g.fillRect(0,H*.5,W,H*.5);
@@ -216,7 +266,7 @@ var scenes=[
    g.fillStyle='rgba(255,210,150,.25)';g.fillRect(0,H-sh,W,2);var q3=g.createLinearGradient(0,0,fw,0);q3.addColorStop(0,'#1a120e');q3.addColorStop(1,'#241812');g.fillStyle=q3;g.fillRect(0,0,fw,H);
    g.save();g.translate(W,0);g.scale(-1,1);g.fillRect(0,0,fw,H);g.restore();glow(W*.12,H-sh*.6,H*.3,'rgba(255,190,110,A)',.18)});
   this.car=[];for(var i=0;i<5;i++)this.car.push({x:RR(0,W),y:H*RR(.62,.75),v:RR(30,90)*(i%2?1:-1),r:RR(10,20)});
-  this.dr=[];for(i=0;i<60;i++)this.dr.push({x:RR(0,W),y:RR(0,H*.9),r:RR(2.2,6),w:RR(0,6),v:0,tr:0,mx:0});
+  this.dr=[];for(i=0,N2=cnt(60);i<N2;i++)this.dr.push({x:RR(0,W),y:RR(0,H*.9),r:RR(2.2,6),w:RR(0,6),v:0,tr:0,mx:0});
   this.st=[];for(i=0;i<110;i++)this.st.push({x:RR(0,W),y:RR(0,H),l:RR(10,30),v:RR(500,900)});this.fl=0},
  draw:function(t,dt){g.drawImage(this.bg,0,0,W,H);
   this.car.forEach(function(o){o.x+=o.v*dt;if(o.x>W+40)o.x=-40;if(o.x<-40)o.x=W+40;var c=o.v>0?'255,235,200':'255,70,60';glow(o.x,o.y,o.r*2.4,'rgba('+c+',A)',.55);glow(o.x+o.r*2.2,o.y,o.r*2.4,'rgba('+c+',A)',.55)});
@@ -234,7 +284,7 @@ var scenes=[
   var sky=layer(function(){grad([[0,'#02030a'],[.5,'#0a1130'],[1,'#27325e']],0,hz);
    var ang=-.5,cx=W*.5,cy=hz*.45,ca=Math.cos(ang),sa=Math.sin(ang);
    for(var i=0;i<30;i++){var u=RR(-.7,.7)*Math.max(W,H),d=RR(-1,1)*H*.06;glow(cx+ca*u-sa*d,cy+sa*u+ca*d,RR(60,160),i%3?'rgba(150,170,255,A)':'rgba(255,205,205,A)',.05)}
-   for(i=0;i<3400;i++){var x=RR(0,W),y=RR(0,hz),dd=-(x-cx)*sa+(y-cy)*ca;if(rnd()>Math.exp(-Math.pow(dd/(H*.11),2))*.9+.12)continue;
+   for(i=0,N3=cnt(3400);i<N3;i++){var x=RR(0,W),y=RR(0,hz),dd=-(x-cx)*sa+(y-cy)*ca;if(rnd()>Math.exp(-Math.pow(dd/(H*.11),2))*.9+.12)continue;
     var b=Math.pow(rnd(),3);g.fillStyle='rgba('+(200+rnd()*55|0)+','+(210+rnd()*45|0)+',255,'+(.25+b*.75)+')';g.fillRect(x,y,.5+b*1.3,.5+b*1.3);if(b>.7&&tw.length<70)tw.push({x:x,y:y,p:RR(0,6)})}
    mtn(hz+6,H*.17,.55,'#222b52','#151b38');mtn(hz+8,H*.12,.6,'#10152d','#090c1c')});
   this.tw=tw;
@@ -285,11 +335,12 @@ var scenes=[
    g.fillStyle='#111';g.beginPath();g.moveTo(cx-30*sc,cy-24*sc);g.lineTo(cx,cy-46*sc);g.lineTo(cx+30*sc,cy-24*sc);g.fill();
    g.fillStyle='#e9f1ff';g.beginPath();g.moveTo(cx-30*sc,cy-24*sc);g.lineTo(cx,cy-46*sc);g.lineTo(cx+30*sc,cy-24*sc);g.lineTo(cx+26*sc,cy-26*sc);g.lineTo(cx,cy-42*sc);g.lineTo(cx-26*sc,cy-26*sc);g.fill();
    glow(cx-4*sc,cy-13*sc,60*sc,'rgba(255,190,100,A)',.55);g.fillStyle='#ffd58a';g.fillRect(cx-9*sc,cy-18*sc,10*sc,9*sc);row(H*1.04,H*.42,260,'#050b18','#6a80a6')});
-  this.sn=[];for(var i=0;i<230;i++)this.sn.push({x:RR(0,W),y:RR(0,H),z:Math.pow(rnd(),1.5),p:RR(0,6)})},
+  this.sn=[];for(var i=0,N4=cnt(230);i<N4;i++)this.sn.push({x:RR(0,W),y:RR(0,H),z:Math.pow(rnd(),1.5),p:RR(0,6)})},
  draw:function(t,dt){g.drawImage(this.bg,0,0,W,H);
   this.sn.forEach(function(o){var z=o.z;o.y+=(18+z*100)*dt;o.x+=(Math.sin(t*.7+o.p)*12+8+z*20)*dt;if(o.y>H+10){o.y=-10;o.x=Math.random()*W}if(o.x>W+10)o.x=-10;var r=.8+z*3.6;
    if(z>.72)glow(o.x,o.y,r*2.5,'rgba(255,255,255,A)',.5);else{g.fillStyle='rgba(255,255,255,'+(.35+z*.6)+')';g.beginPath();g.arc(o.x,o.y,r,0,7);g.fill()}})}}
 ];
+
 
 var idx=0,box=document.getElementById('scenes');
 function setScene(i){idx=(i+scenes.length)%scenes.length;cur=scenes[idx];cur.init();fade=0;
@@ -298,10 +349,19 @@ function setScene(i){idx=(i+scenes.length)%scenes.length;cur=scenes[idx];cur.ini
 scenes.forEach(function(s,i){var b=document.createElement('button');b.textContent=s.n;b.onclick=function(){setScene(i)};box.appendChild(b)});
 function rs(){D=Math.min(devicePixelRatio||1,2);W=innerWidth;H=innerHeight;cv.width=W*D;cv.height=H*D;g.setTransform(D,0,0,D,0,0);if(cur)cur.init()}
 window.addEventListener('resize',rs);rs();
+var bloomC=document.createElement('canvas'),bloomX=bloomC.getContext('2d');
 var last=performance.now();
 function loop(now){var dt=Math.min((now-last)/1000,.05);last=now;cur.draw(now/1000,dt);
+  if(realMode){try{
+   var bw=Math.max(1,W>>2),bh=Math.max(1,H>>2);bloomC.width=bw;bloomC.height=bh;
+   try{bloomX.filter='blur(4px)'}catch(e){bloomX.filter='none'}
+   bloomX.drawImage(cv,0,0,cv.width,cv.height,0,0,bw,bh);
+   g.save();g.globalCompositeOperation='screen';g.globalAlpha=.42;g.drawImage(bloomC,0,0,W,H);
+   g.globalAlpha=.16;g.drawImage(bloomC,2,0,W,H);g.globalAlpha=.14;g.drawImage(bloomC,-2,1,W,H);g.restore();
+   var vg2=g.createRadialGradient(W/2,H/2,Math.min(W,H)*.32,W/2,H/2,Math.max(W,H)*.7);vg2.addColorStop(0,'rgba(0,0,0,0)');vg2.addColorStop(1,'rgba(0,0,0,.28)');g.fillStyle=vg2;g.fillRect(0,0,W,H)
+  }catch(e){}}
   var vg=g.createRadialGradient(W/2,H/2,Math.min(W,H)*.4,W/2,H/2,Math.max(W,H)*.75);vg.addColorStop(0,'rgba(0,0,0,0)');vg.addColorStop(1,'rgba(0,0,0,.4)');g.fillStyle=vg;g.fillRect(0,0,W,H);
-  gp=gp||g.createPattern(grain,'repeat');g.save();g.globalAlpha=.07;g.globalCompositeOperation='overlay';g.translate(Math.random()*200|0,Math.random()*200|0);g.fillStyle=gp;g.fillRect(-200,-200,W+400,H+400);g.restore();
+  gp=gp||g.createPattern(grain,'repeat');g.save();g.globalAlpha=realMode?.13:.07;g.globalCompositeOperation='overlay';g.translate(Math.random()*200|0,Math.random()*200|0);g.fillStyle=gp;g.fillRect(-200,-200,W+400,H+400);g.restore();
   if(fade<1){fade=Math.min(1,fade+dt*1.6);g.fillStyle='rgba(0,0,0,'+(1-fade)+')';g.fillRect(0,0,W,H)}requestAnimationFrame(loop)}
 
 /* 環境音: WebAudioで合成(素材なし=著作権の問題なし) */
@@ -351,6 +411,24 @@ $('file').onchange=function(e){var add=false;[].forEach.call(e.target.files,func
 /* 曲リスト(ボトムシート) */
 function sheet(o){document.body.classList.toggle('sheet-open',o)}
 $('queueBtn').onclick=function(){sheet(true)};$('closeSheet').onclick=function(){sheet(false)};$('scrim').onclick=function(){sheet(false)};
+
+/* 説明・設定シート */
+function openSheet(el){document.querySelectorAll('.sheet').forEach(function(s){s.style.display=(s===el?'flex':'none')});document.body.classList.add('sheet-open')}
+$('infoBtn').onclick=function(){openSheet($('infoSheet'))};$('closeInfo').onclick=function(){sheet(false)};
+$('settingsBtn').onclick=function(){openSheet($('settingsSheet'))};$('closeSettings').onclick=function(){sheet(false)};
+$('queueBtn').onclick=function(){openSheet($('sheet'))};
+var oldScrim=$('scrim').onclick;$('scrim').onclick=function(){sheet(false);document.querySelectorAll('.sheet').forEach(function(s){s.style.display=''})};
+
+/* テーマ設定 */
+var themeSeg=$('themeSeg');
+function applyTheme(v){if(v==='system')document.documentElement.removeAttribute('data-theme');else document.documentElement.setAttribute('data-theme',v);
+  [].forEach.call(themeSeg.children,function(b){b.classList.toggle('on',b.getAttribute('data-theme-opt')===v)});try{localStorage.setItem('ls_theme',v)}catch(e){}}
+[].forEach.call(themeSeg.children,function(b){b.onclick=function(){applyTheme(b.getAttribute('data-theme-opt'))}});
+var savedTheme='system';try{savedTheme=localStorage.getItem('ls_theme')||'system'}catch(e){}applyTheme(savedTheme);
+
+/* 保存データの消去 */
+$('clearDataBtn').onclick=function(){if(!confirm('保存されている設定・追加した曲・タイマーの記録などをすべて消去します。よろしいですか？'))return;
+  try{localStorage.clear()}catch(e){}try{indexedDB.deleteDatabase('lofi_scenery')}catch(e){}location.reload()};
 
 /* 景色の自動切替 */
 var autoOn=true,autoMin=5,nextAt=0,sw=$('auto'),minSel=$('mins'),nextEl=$('next-in');
@@ -422,6 +500,9 @@ window.addEventListener('keydown',function(e){if(e.target.tagName==='SELECT')ret
   if(e.code==='ArrowRight'){setScene(idx+1);resetTimer()}if(e.code==='ArrowLeft'){setScene(idx-1);resetTimer()}
   if(e.code==='Space'){e.preventDefault();playBtn.click()}});
 
+var realBtn=$('realBtn');try{realMode=localStorage.getItem('ls_real')==='1'}catch(e){}
+realBtn.classList.toggle('on',realMode);
+realBtn.onclick=function(){realMode=!realMode;realBtn.classList.toggle('on',realMode);try{localStorage.setItem('ls_real',realMode?'1':'0')}catch(e){}cur.init()};
 updAuto();resetTimer();
 var s0=0;try{s0=parseInt(localStorage.getItem('ls_scene'))||0}catch(e){}
 setScene(s0);requestAnimationFrame(loop);
